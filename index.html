@@ -510,46 +510,6 @@ async function fetchParts(filename, count, startPct, endPct) {
 
 
 
-<script>
-  (function () {
-    const showDelay = 2000; 
-    const countdownStart = 12; 
-    const reappearDelay = 150000; 
-    const adContainer = document.getElementById('ad-container');
-    const closeBtn = document.getElementById('close-ad');
 
-    function showAd() {
-      adContainer.style.display = 'block';
-      adContainer.classList.remove('hidden');
-      adContainer.setAttribute('aria-hidden', 'false');
-
-      let timeLeft = countdownStart;
-      closeBtn.textContent = `Close (${timeLeft})`;
-      closeBtn.disabled = true;
-      closeBtn.classList.remove('enabled');
-
-      const t = setInterval(() => {
-        timeLeft--;
-        if (timeLeft > 0) {
-          closeBtn.textContent = `Close (${timeLeft})`;
-        } else {
-          clearInterval(t);
-          closeBtn.disabled = false;
-          closeBtn.classList.add('enabled');
-          closeBtn.textContent = 'Close ↑';
-        }
-      }, 1000);
-    }
-
-    setTimeout(showAd, showDelay);
-
-    closeBtn.addEventListener('click', () => {
-      if (closeBtn.disabled) return;
-      adContainer.classList.add('hidden');
-      adContainer.setAttribute('aria-hidden', 'true');
-      setTimeout(showAd, reappearDelay);
-    });
-  })();
-</script>
 </body>
 </html>
